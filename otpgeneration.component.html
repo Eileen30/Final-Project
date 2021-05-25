@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Security</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li ><a routerLink="/fileselect">Home</a></li>
+        <!-- <li><a [routerLink]="">Adout us</a></li>
+        <li><a [routerLink]="">contact us</a></li> -->
+        <li class="active"><a routerLink="/download">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <input type="text" name="otp" [(ngModel)]="otp" id="otp" placeholder="otp" style="margin-left: 50px;">
+</div>
+<button type="submit" (click)="payment()" class="btn btn-success btn-lg btn-block" style="margin-top: 100px;">Pay Amount</button>
+<button type="submit" (click)="download()" class="btn btn-primary" style="margin-top: 130px;margin-left: 300px;">Download</button>
+

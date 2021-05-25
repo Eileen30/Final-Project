@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Security</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li ><a routerLink="/fileselect">Home</a></li>
+        <!-- <li><a [routerLink]="">Adout us</a></li>
+        <li><a [routerLink]="">contact us</a></li> -->
+        <li class="active"><a routerLink="/download">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div style="text-align:center">
+    <h3>product key generated is: <b style="color:red;font:20px">{{productkey}}</b></h3>
+    <h2 style="color: darkred;">
+      Amount
+    </h2>
+    <b> Rs. 1500</b>
+    </div>
+    <p></p>
+    <button type="submit"(click)="payment()" class="btn btn-success btn-lg btn-block">submit</button>
