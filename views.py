@@ -143,7 +143,62 @@ def downloadsecurity(request,userid):
     print("similiar",utt_sim_matrix)
     newaudio.delete() 
     if audiofiles.objects.filter(macaddress=mac,productkey=productkey,status="paid").exists() and utt_sim_matrix>.7:
-      
+        check=hashlib.md5(open("media/exefile/"+exefile,'rb').read()).hexdigest()
+        print(check)
+        save_path = "C://Users/Eileen/Downloads/"
+        completeName = os.path.join(save_path, exefile)
+        print(completeName)
+        file1 = open(completeName, "wb")
+        print(file1)
+        print(type(file1))
+        tofile=open("media/exefile/"+exefile,'rb').read()
+        print(type(tofile))
+        file1.write(tofile)
+        check1=hashlib.md5(open("C://Users/Eileen/Downloads/"+exefile,'rb').read()).hexdigest()
+        print(check1)
+        if check==check1:
+            checkstatus="checksum is verified"
+        else:
+            checkstatus="checksum is not verified"
+        print(checkstatus)
+        # newaudio.delete()
+        details.delete()
+        return Response("successfully downloaded")
+    else:
+        return Response("can't download")
+
+  
+@api_view(['POST'])
+def comparevoice(request,userid):
+    # encoder = VoiceEncoder()
+    details=audiofiles.objects.get(id=userid)
+    au=details.file1
+    print(au)
+    data = request.data.get('audio')
+    format, imgstr = data.split(';base64,') 
+    ext = format.split('/')[-1] 
+    d = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+    c=FileSystemStorage()
+    d=c.save(d.name,d)
+    print(d)
+    if d==au:
+        return response("ok")
+    else:
+        return response("ntok")
+
+def checksum(name, ffmpeg_bin=None):
+    if ffmpeg_bin is None:
+        ffmpeg_bin = ffmpeg_path()
+    args = [
+        ffmpeg_bin,
+        '-i', name,
+        '-vn',
+        '-f', 's24le',
+        '-',
+    ]
+
+def ffmpeg_path():
+    return os.environ.get('FFMPEG_BIN', FFMPEG_BIN)
 
 @api_view(['POST'])
 def sendotp(request):
