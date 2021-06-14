@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Security</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a routerLink="/fileselect">Home</a></li>
+        <!-- <li><a [routerLink]="">Adout us</a></li>
+        <li><a [routerLink]="">contact us</a></li> -->
+        <li><a routerLink="/download">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+<label for="software">Choose a software: </label>
+
+<select name="software" [(ngModel)]="software" id="software">
+  <option value="calculator">calculator.exe</option>
+  <option value="unitconverter">unitconvertor.exe</option>
+</select>
+<br>
+<img src="/assets/images/calculator.jpg" alt="Calculator">
+<img src="/assets/images/lengthcalculator.jpg" alt="Unit Convertor">
+<p></p>
+  <button type="submit"(click)="nextpage()" class="btn btn-success btn-lg btn-block">Submit</button>
+ 
