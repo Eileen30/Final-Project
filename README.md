@@ -1,2 +1,2 @@
 # Final-Project
-A Multilevel Authentication for Preventing from Software Piracy
+A Multi-Level Authentication Method for Preventing Software Piracy
